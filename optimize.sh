@@ -120,7 +120,7 @@ fi
 lock=$(echo -n "$IMG_PATH" | md5sum| cut -d" " -f1)
 
 if [ -f "/tmp/$lock" ]; then
-    echo "$IMG_PATH yet in progress"
+    echo "$IMG_PATH yet in progress (lock file: /tmp/$lock)"
     exit 1
 else
     touch "/tmp/$lock"
@@ -163,8 +163,6 @@ if [ "$INTERACTIVE_MODE" = "1" ]; then
             echo "Select an option [y/n]: "
             read -r WEBP_OPTIMIZATION
         done
-        echo ""
-        echo ""
     fi
     if [ -z "$AVIF_OPTIMIZATION" ]; then
         echo ""
@@ -173,9 +171,9 @@ if [ "$INTERACTIVE_MODE" = "1" ]; then
             echo "Select an option [y/n]: "
             read -r AVIF_OPTIMIZATION
         done
-        echo ""
-        echo ""
     fi
+    echo ""
+    echo ""
 fi
 
 ##################################
